@@ -101,6 +101,7 @@ body {
   width: 30px;
   height: 100%;
   justify-content: center;
+  margin-left: 20px;
 }
 
 .check i {

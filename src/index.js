@@ -25,9 +25,9 @@ const displayTasks = () => {
     div.setAttribute('data-id', task.index);
 
     // Create a check button for each task
-    const check = document.createElement('span');
+    const check = document.createElement('form');
     check.className = 'check';
-    check.innerHTML = '<i class="fa-regular fa-square"></i>';
+    check.innerHTML = '<input type="checkbox">';
     div.append(check);
 
     // Create an input field for the task description
