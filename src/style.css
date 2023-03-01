@@ -34,9 +34,6 @@ body {
   font-size: 20px;
   cursor: pointer;
   margin-right: 10px;
-}
-
-.refresh i {
   transform: rotate(90deg);
   color: #454545;
 }
@@ -67,9 +64,6 @@ body {
   background-color: #fff;
   cursor: pointer;
   margin-right: 5px;
-}
-
-.submit {
   transform: rotate(180deg);
   color: #808080;
 }
