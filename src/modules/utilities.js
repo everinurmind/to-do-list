@@ -111,8 +111,8 @@ addIcon.addEventListener('click', () => {
 // Remove All Completed Tasks
 const clearCompletedTasks = () => {
   const completedTasks = document.querySelectorAll('.checkbox:checked');
-  for (let i = completedTasks.length - 1; i >= 0; i--) {
-    const taskId = parseInt(completedTasks[i].parentNode.getAttribute('data-id'));
+  for (let i = completedTasks.length - 1; i >= 0; i -= 1) {
+    const taskId = parseInt(completedTasks[i].parentNode.getAttribute('data-id'), 10);
     toDoList.splice(taskId - 1, 1);
   }
   // Update the IDs of the remaining tasks
