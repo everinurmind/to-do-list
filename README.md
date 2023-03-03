@@ -73,7 +73,7 @@ To get a local copy up and running, follow these steps.
 
 ### Run tests
 
-- there's no test for this project
+- Run: ``npm start``
 
 ### Deployment
 
