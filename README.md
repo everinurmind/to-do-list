@@ -16,7 +16,7 @@
 - [🙏 Acknowledgements](#acknowledgements)
 - [📝 License](#license)
 
-# 📖 Awesome Books <a name="about-project"></a>
+# 📖 To-Do List <a name="about-project"></a>
 
 Hello! Here you will see To-Do List project
 
