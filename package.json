@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ahmed025566/To-Do-App.git"
+    "url": "git+https://github.com/everinurmind/to-do-list-n.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ahmed025566/To-Do-App/issues"
+    "url": "https://github.com/everinurmind/to-do-list-n/issues"
   },
-  "homepage": "https://github.com/ahmed025566/To-Do-App#readme",
+  "homepage": "https://github.com/everinurmind/to-do-list-n#readme",
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.7.3",
