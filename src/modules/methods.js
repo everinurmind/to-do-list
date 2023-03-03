@@ -1,11 +1,7 @@
 import Task from './classes.js';
-
-// Auto Rendering
-let toDoList = localStorage.getItem('toDoList') ? JSON.parse(localStorage.getItem('toDoList')) : [];
-const tasksContainer = document.querySelector('ul');
-const form = document.querySelector('form');
-const newTaskInput = document.getElementById('new-task');
-let indexCounter = 1;
+import {
+  toDoList, tasksContainer, newTaskInput, indexCounter,
+} from './variables.js';
 
 // Functions
 const renderList = () => {
@@ -130,5 +126,5 @@ clearButton.addEventListener('click', () => {
 });
 
 export {
-  tasksContainer, form, addTask, renderList, clearCompletedTasks,
+  addTask, renderList, clearCompletedTasks,
 };
