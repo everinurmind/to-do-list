@@ -1,8 +1,7 @@
 import './style.css';
 import {
-  addTask, renderList, clearCompletedTasks,
-} from './modules/methods.js';
-import { form } from './modules/variables.js';
+  form, addTask, renderList, clearCompletedTasks,
+} from './modules/utilities.js';
 
 renderList();
 clearCompletedTasks();
