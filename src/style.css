@@ -2,7 +2,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   box-sizing: border-box;
 
   --main-gray-color: rgba(200, 200, 200, 0.8);
@@ -48,8 +48,11 @@ li {
 
 .las.la-sync,
 .las.la-ellipsis-v,
-.las.la-trash-alt {
+.las.la-trash-alt,
+#add {
   color: #727272;
+  border: none;
+  background-color: transparent;
 }
 
 .las.la-trash-alt {
@@ -78,7 +81,8 @@ li {
 }
 
 form {
-  width: 90%;
+  width: 100%;
+  display: flex;
 }
 
 #new-task {
@@ -106,6 +110,12 @@ li.editing {
   background-color: transparent;
   border: none;
   outline: none;
+}
+
+.task-description.completed {
+  font-weight: bold;
+  color: #ff0400;
+  text-decoration: line-through;
 }
 
 #btn {

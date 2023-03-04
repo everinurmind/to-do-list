@@ -16,7 +16,7 @@
 - [🙏 Acknowledgements](#acknowledgements)
 - [📝 License](#license)
 
-# 📖 Awesome Books <a name="about-project"></a>
+# 📖 To-Do List <a name="about-project"></a>
 
 Hello! Here you will see To-Do List project
 
@@ -73,7 +73,7 @@ To get a local copy up and running, follow these steps.
 
 ### Run tests
 
-- there's no test for this project
+- Run: ``npm start``
 
 ### Deployment
 
