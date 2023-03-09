@@ -96,4 +96,24 @@ const addTask = () => {
   renderList();
 };
 
-export { addTask, renderList };
+const removeTask = (id) => {
+  const filteredList = toDoList.filter((task) => task.index !== +id);
+  let i = 1;
+  filteredList.forEach((task) => {
+    task.index = i;
+    i += 1;
+  });
+
+  localStorage.setItem('toDoList', JSON.stringify(filteredList));
+  renderList();
+};
+
+const deleteBtnArr = document.querySelectorAll('.la-trash-alt');
+deleteBtnArr.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    const taskId = e.target.dataset.id;
+    removeTask(taskId);
+  });
+});
+
+export { addTask, renderList, removeTask };

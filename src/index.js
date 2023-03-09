@@ -3,7 +3,7 @@ import './style.css';
 
 // Import variables and functions from modules
 import { form, newTaskBtn, clearBtn } from './modules/variables.js';
-import { addTask, renderList } from './modules/functions.js';
+import { addTask, renderList, removeTask } from './modules/functions.js';
 import { clearCompletedTasks } from './modules/methods.js';
 
 // Render the list on page load
