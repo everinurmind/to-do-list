@@ -1,22 +1,23 @@
 import Task from './classes.js';
-import { toDoList, container, newTaskInput } from './variables.js';
+import { toDoList } from './variables.js';
 import { updateStatus } from './methods.js';
 
 const renderList = () => {
+  const container = document.querySelector('ul');
   container.innerHTML = '';
+
   toDoList.forEach((task) => {
-    container.insertAdjacentHTML('beforeend',
-      `<li data-id="${task.index}">
-      <input type="checkbox" class="checkbox" data-id="${task.index}" ${(task.completed === true) ? 'checked' : ''}>
-      <input type="text" class="task-description ${(task.completed === true) ? 'completed' : ''}" data-id="${task.index}" value="${task.description}" readonly>
-      <span>
-        <i class="las la-ellipsis-v" data-id="${task.index}"></i>
-        <i class="las la-trash-alt" data-id="${task.index}"></i>
-      </span>
-    </li>`);
+    container.insertAdjacentHTML('beforeend', `
+      <li data-id="${task.index}">
+        <input type="checkbox" class="checkbox" data-id="${task.index}" ${(task.completed === true) ? 'checked' : ''}>
+        <input type="text" class="task-description ${(task.completed === true) ? 'completed' : ''}" data-id="${task.index}" value="${task.description}" readonly>
+        <span>
+          <i class="las la-ellipsis-v" data-id="${task.index}"></i>
+          <i class="las la-trash-alt" data-id="${task.index}"></i>
+        </span>
+      </li>`);
   });
 
-  // To-Do List Functions
   const editTask = (id) => {
     const options = document.querySelector(`.las.la-ellipsis-v[data-id="${id}"]`);
     const remove = document.querySelector(`.las.la-trash-alt[data-id="${id}"]`);
@@ -42,8 +43,8 @@ const renderList = () => {
     renderList();
   };
 
-  const removeTask = (index) => {
-    const filteredList = toDoList.filter((task) => task.index !== +index);
+  const removeTask = (id) => {
+    const filteredList = toDoList.filter((task) => task.index !== +id);
     let i = 1;
     filteredList.forEach((task) => {
       task.index = i;
@@ -59,6 +60,7 @@ const renderList = () => {
       editTask(e.target.dataset.id);
     });
   });
+
   document.querySelectorAll('.task-description').forEach((task) => {
     task.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
@@ -66,6 +68,7 @@ const renderList = () => {
       }
     });
   });
+
   document.querySelectorAll('.la-trash-alt').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       removeTask(e.target.dataset.id);
@@ -81,6 +84,7 @@ const renderList = () => {
 };
 
 const addTask = () => {
+  const newTaskInput = document.getElementById('new-task');
   if (newTaskInput.value.trim() === '') {
     return;
   }
@@ -96,4 +100,24 @@ const addTask = () => {
   renderList();
 };
 
-export { addTask, renderList };
+const removeTask = (id) => {
+  const filteredList = toDoList.filter((task) => task.index !== +id);
+  let i = 1;
+  filteredList.forEach((task) => {
+    task.index = i;
+    i += 1;
+  });
+
+  localStorage.setItem('toDoList', JSON.stringify(filteredList));
+  renderList();
+};
+
+const deleteBtnArr = document.querySelectorAll('.la-trash-alt');
+deleteBtnArr.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    const taskId = e.target.dataset.id;
+    removeTask(taskId);
+  });
+});
+
+export { addTask, renderList, removeTask };
