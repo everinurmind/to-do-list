@@ -1,3 +1,4 @@
+import Task from './classes.js';
 import { addTask, removeTask } from './functions.js';
 
 const localStorageMock = {
@@ -16,7 +17,7 @@ beforeEach(() => {
   window.localStorage.clear();
 });
 
-describe('addTask function', () => {
+describe('Add and remove functions', () => {
   test('should add a new task to the list and update localStorage', () => {
     const input = document.createElement('input');
     input.id = 'new-task';
@@ -29,5 +30,11 @@ describe('addTask function', () => {
     addTask('test task');
 
     expect(JSON.parse(localStorage.getItem('toDoList')).length).toBe(1);
+
+    test('should remove the task', () => {
+      removeTask(0);
+      expect(JSON.parse(localStorage.getItem('toDoList')).length).toBe(0);
+    });
   });
 });
+
