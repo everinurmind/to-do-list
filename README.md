@@ -88,6 +88,11 @@ To get a local copy up and running, follow these steps.
 - GitHub: [@everinurmind](https://github.com/everinurmind)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/everinurmind)
 
+👤 **Matee Safi**
+
+- GitHub: [@matee-safi](https://github.com/matee-safi)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/matee-safi-755421243/)
+
 ## 🔭 Future Features <a name="future-features"></a>
 
 - **[Creating own design]**
