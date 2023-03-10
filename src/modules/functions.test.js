@@ -1,10 +1,5 @@
 import { addTask, removeTask } from './functions.js';
-
-const localStorageMock = {
-  getItem: jest.fn(),
-  setItem: jest.fn(),
-  clear: jest.fn(),
-};
+import localStorageMock from './localStorageMock.js';
 
 const container = document.createElement('div');
 container.id = 'container';
