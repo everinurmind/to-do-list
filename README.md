@@ -81,12 +81,17 @@ To get a local copy up and running, follow these steps.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 👥 Author <a name="author"></a>
+## 👥 Authors <a name="author"></a>
 
 👤 **Nurbol Sultanov**
 
 - GitHub: [@everinurmind](https://github.com/everinurmind)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/everinurmind)
+
+👤 **Matee Safi**
+
+- GitHub: [@matee-safi](https://github.com/matee-safi)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/matee-safi-755421243/)
 
 ## 🔭 Future Features <a name="future-features"></a>
 
