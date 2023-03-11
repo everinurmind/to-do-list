@@ -1,6 +1,15 @@
-import {
-  editTask, updateTask, clearCompletedTasks, updateStatus,
-} from './edit.js';
+import { editTask, updateTask, clearCompletedTasks, updateStatus } from './edit.js';
+import localStorageMock from './localStorageMock.js';
+
+const container = document.createElement('div');
+container.id = 'container';
+document.body.appendChild(container);
+
+beforeEach(() => {
+  jest.clearAllMocks();
+  window.localStorage = localStorageMock;
+  window.localStorage.clear();
+});
 
 // UpdateStatus Test
 describe('Update status', () => {
