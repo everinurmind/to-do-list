@@ -1,3 +1,13 @@
+export const updateStatus = (id) => {
+  const toDoList = JSON.parse(localStorage.getItem('toDoList')) || [];
+  const checkbox = document.querySelector(`input[type="checkbox"][data-id="${id}"]`);
+  const index = toDoList.findIndex((task) => task.index === +id);
+  if (checkbox) {
+    toDoList[index].completed = checkbox.checked;
+    localStorage.setItem('toDoList', JSON.stringify(toDoList));
+  }
+};
+
 export const editTask = (id) => {
   const options = document.querySelector(`.las.la-ellipsis-v[data-id="${id}"]`);
   const remove = document.querySelector(`.las.la-trash-alt[data-id="${id}"]`);

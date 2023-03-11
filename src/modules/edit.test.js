@@ -1,23 +1,52 @@
-import { editTask, updateTask, clearCompletedTasks } from './edit.js';
+import {
+  editTask, updateTask, clearCompletedTasks, updateStatus,
+} from './edit.js';
 
-document.body.innerHTML = `
-  <ul>
-    <li data-id="123">
-      <span class="las la-ellipsis-v" data-id="123"></span>
-      <input type="text" class="task-description" data-id="123" value="Buy groceries" readonly>
-      <span class="las la-trash-alt" data-id="123"></span>
-    </li>
-  </ul>
-`;
+// UpdateStatus Test
+describe('Update status', () => {
+  beforeEach(() => {
+    const task = { index: 1, description: 'Test task', completed: false };
+    localStorage.setItem('toDoList', JSON.stringify([task]));
+  });
 
+  test('Update task status', () => {
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.dataset.id = '1';
+    input.checked = true;
+    document.body.appendChild(input);
+
+    updateStatus('1');
+
+    const localObject = JSON.parse(localStorage.getItem('toDoList'));
+    expect(localObject[0].completed).toBe(true);
+  });
+});
+
+// Edit Task Test
 describe('editTask function', () => {
-  test('editTask function should set the task as "editing"', () => {
-    editTask('123');
+  test('should set task to editing mode', () => {
+    const id = 1;
+    const task = document.createElement('li');
+    task.setAttribute('data-id', id);
+    document.body.appendChild(task);
 
-    const options = document.querySelector('.las.la-ellipsis-v[data-id="123"]');
-    const remove = document.querySelector('.las.la-trash-alt[data-id="123"]');
-    const description = document.querySelector('.task-description[data-id="123"]');
-    const task = document.querySelector('li[data-id="123"]');
+    const options = document.createElement('span');
+    options.classList.add('las', 'la-ellipsis-v');
+    options.setAttribute('data-id', id);
+    document.body.appendChild(options);
+
+    const remove = document.createElement('span');
+    remove.classList.add('las', 'la-trash-alt');
+    remove.setAttribute('data-id', id);
+    document.body.appendChild(remove);
+
+    const description = document.createElement('input');
+    description.classList.add('task-description');
+    description.setAttribute('data-id', id);
+    document.body.appendChild(description);
+
+    editTask(id);
 
     expect(task.classList.contains('editing')).toBe(true);
     expect(options.classList.contains('hide')).toBe(true);
@@ -26,38 +55,38 @@ describe('editTask function', () => {
   });
 });
 
-const toDoList = [
-  {
-    index: 123,
-    description: 'Buy groceries',
-    completed: false,
-  },
-  {
-    index: 456,
-    description: 'Do laundry',
-    completed: true,
-  },
-];
-localStorage.setItem('toDoList', JSON.stringify(toDoList));
-
-describe('updateTask function', () => {
-  test('updateTask function should update the task description in the toDoList and render the updated list', () => {
-    updateTask('123', toDoList);
-    const updatedToDoList = JSON.parse(localStorage.getItem('toDoList'));
-    expect(updatedToDoList[0].description).toBe('Buy groceries');
-    expect(updatedToDoList.length).toBe(2);
+// Update Task Test
+describe('updateTask', () => {
+  it('should update a task description in the toDoList and in localStorage', () => {
+    const id = 1;
+    const originalDescription = 'Original task description';
+    const updatedDescription = 'Updated task description';
+    const toDoList = [
+      { index: 1, description: originalDescription },
+      { index: 2, description: 'Another task description' },
+    ];
+    localStorage.setItem('toDoList', JSON.stringify(toDoList));
+    document.body.innerHTML = `<input class="task-description" data-id="${id}" value="${updatedDescription}" />`;
+    updateTask(id, toDoList);
+    const updatedTask = JSON.parse(localStorage.getItem('toDoList'))[0];
+    expect(updatedTask.description).toEqual(updatedDescription);
   });
 });
 
+// Clear Tasks Test
 describe('clearCompletedTasks function', () => {
-  test('clearCompletedTasks should remove completed tasks from the toDoList array and update local storage', () => {
-    const completedTask1 = { id: 1, description: 'Task 1', completed: true };
-    const completedTask2 = { id: 2, description: 'Task 2', completed: true };
-    const incompleteTask = { id: 3, description: 'Task 3', completed: false };
-    const toDoList = [completedTask1, completedTask2, incompleteTask];
-    localStorage.setItem('toDoList', JSON.stringify(toDoList));
+  test('should clear completed tasks from toDoList and update localStorage', () => {
+    const mockList = [
+      { description: 'task 1', completed: false, index: 1 },
+      { description: 'task 2', completed: true, index: 2 },
+      { description: 'task 3', completed: false, index: 3 },
+    ];
+    window.localStorage.setItem('toDoList', JSON.stringify(mockList));
+
     clearCompletedTasks();
-    const updatedToDoList = JSON.parse(localStorage.getItem('toDoList'));
-    expect(updatedToDoList).toEqual([incompleteTask]);
+
+    expect(JSON.parse(localStorage.getItem('toDoList')).length).toBe(2);
+    expect(JSON.parse(localStorage.getItem('toDoList'))[0].description).toBe('task 1');
+    expect(JSON.parse(localStorage.getItem('toDoList'))[1].description).toBe('task 3');
   });
 });
