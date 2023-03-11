@@ -1,4 +1,6 @@
-import { editTask, updateTask, clearCompletedTasks, updateStatus } from './edit.js';
+import {
+  editTask, updateTask, clearCompletedTasks, updateStatus,
+} from './edit.js';
 import localStorageMock from './localStorageMock.js';
 
 const container = document.createElement('div');
